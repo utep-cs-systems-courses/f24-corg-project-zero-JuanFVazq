@@ -14,3 +14,18 @@ void print_char_5x7(char c)
   }
   putchar('\n');
 }
+
+void print_char_8x12(char k)
+{
+  k -= 0x40;
+  for (char col = 0; col < 10; col++) {
+    for (char row = 0; row < 12; row++) {
+      unsigned short rowBits = font_8x12[k][col];
+      unsigned short colMask = 1 << (12-row); /* mask to select bit associated with bit */
+      putchar( (rowBits & colMask) ? '*' : ' ');
+    }
+    putchar('\n');
+  }
+  putchar('\n');
+}
+  
